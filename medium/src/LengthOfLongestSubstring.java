@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @Author szl
@@ -13,33 +14,50 @@ public class LengthOfLongestSubstring {
         if (N == 0)
             return 0;
         for (int i = 0; i < N; i++) {
-            boolean flag  = true;
+            boolean flag = true;
             for (int j = 0; j < list.size(); j++) {
-                if (s.charAt(i) == list.get(j)){
+                if (s.charAt(i) == list.get(j)) {
                     flag = false;
                     i = i - list.size() + 1;
                     break;
                 }
 
             }
-            if(flag){
+            if (flag) {
                 list.add(s.charAt(i));
-                if(list.size() > ans)
+                if (list.size() > ans)
                     ans = list.size();
-            }
-            else{
+            } else {
                 list.clear();
                 list.add(s.charAt(i));
             }
 
         }
-        return  ans;
+        return ans;
+
+    }
+
+    public static int lengthOfLongestSubstring1(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        int ans = 0;
+        int left = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(map.get(s.charAt(i)) + 1, left);
+//                System.out.println(left);
+            }
+            map.put(s.charAt(i), i);
+
+            ans = Math.max(ans, i - left + 1);
+            System.out.println(ans);
+        }
+        return ans;
 
     }
 
     public static void main(String[] args) {
-        String s = "abcabcbb";
-        System.out.println(lengthOfLongestSubstring(s));
+        String s = "abba";
+        System.out.println(lengthOfLongestSubstring1(s));
     }
 
 }
