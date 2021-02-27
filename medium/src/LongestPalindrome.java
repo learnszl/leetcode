@@ -1,4 +1,3 @@
-import java.beans.beancontext.BeanContext;
 
 /**
  * @Author szl
@@ -6,38 +5,38 @@ import java.beans.beancontext.BeanContext;
  * @Description
  */
 public class LongestPalindrome {
-    public static String longestPalindrome(String s) {
-        if(s.length() == 0)
-            return "";
-        if(s.length() == 1)
-            return s;
-        int start = 0,end = 0,len = 0;
-        int m = 0, n = 0;
+    public String longestPalindrome(String s) {//中心扩展算法
         int N = s.length();
-        for (int i = 1; i < N - 1; i++) {
-            start = i - 1;
-            end = i + 1;
-            while(start >= 0 && end < N){
-                if(s.charAt(start) == s.charAt(end)){
-                    start--;
-                    end++;
-
-                }
-                else
-                    break;
-            }
-
-            if(start - end > len){
-                len = start - end;
-                m = start;
-                n = end;
+        if (N < 2)
+            return s;
+        int start = 0;
+        int end = 0;
+        int len = 0;
+        for (int i = 0; i < N; i++) {
+            int lenodd = expandCenter(s, i, i);
+            int leneven = expandCenter(s, i, i + 1);
+            len = Math.max(lenodd, leneven);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
 
         }
-        return s.substring(m,n);
+        return s.substring(start, end + 1);
+
+
+    }
+
+    public int expandCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
     }
 
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("ab"));
+        LongestPalindrome longestPalindrome = new LongestPalindrome();
+        System.out.println(longestPalindrome.longestPalindrome("abbb"));
     }
 }
