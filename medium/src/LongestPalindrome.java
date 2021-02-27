@@ -11,7 +11,7 @@ public class LongestPalindrome {
             return s;
         int start = 0;
         int end = 0;
-        int len = 0;
+        int len ;
         for (int i = 0; i < N; i++) {
             int lenodd = expandCenter(s, i, i);
             int leneven = expandCenter(s, i, i + 1);
