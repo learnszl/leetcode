@@ -35,6 +35,16 @@ public class LongestPalindrome {
         return right - left - 1;
     }
 
+
+    public String longestPalindrome1(String s) {//动态规划
+        int N = s.length();
+        if(N < 2)
+            return s;
+        boolean[][] dp = new boolean[N][N];
+        String ans = "";
+        return ans;
+    }
+
     public static void main(String[] args) {
         LongestPalindrome longestPalindrome = new LongestPalindrome();
         System.out.println(longestPalindrome.longestPalindrome("abbb"));
