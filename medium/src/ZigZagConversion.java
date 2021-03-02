@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 /**
  * @Author szl
@@ -58,10 +58,33 @@ public class ZigZagConversion {
 
 
     }
+    public String zigZagConversion1(String s, int numRows) {
+        if (numRows <= 1)
+            return s;
+        ArrayList<StringBuilder> rows = new ArrayList<>();
+        for (int i = 0; i < Math.min(numRows, s.length()); i++) {
+            rows.add(new StringBuilder());
+        }
+        int curRow = 0;
+        boolean goDown = false;
+        for(char c: s.toCharArray()){
+            rows.get(curRow).append(c);
+            if(curRow == 0 || curRow == numRows - 1)
+                goDown = !goDown;
+            curRow += goDown ? 1 : -1;
+
+        }
+        StringBuilder ans = new StringBuilder();
+        for(StringBuilder row : rows){
+            ans.append(row);
+        }
+        return ans.toString();
+    }
+
 
     public static void main(String[] args) {
         ZigZagConversion conversion = new ZigZagConversion();
-        System.out.println(conversion.zigZagConversion("abcde", 4));
+        System.out.println(conversion.zigZagConversion1("abcdefghiweiqneimww", 4));
     }
 
 }
