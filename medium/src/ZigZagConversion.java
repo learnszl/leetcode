@@ -44,7 +44,7 @@ public class ZigZagConversion {
         StringBuffer buffer = new StringBuffer();
         for (int j = 0; j < numRows; j++) {
             for (int k = 0; k < column; k++) {
-                if(ans[j][k] != '*'){
+                if (ans[j][k] != '*') {
                     buffer.append(ans[j][k]);
                 }
             }
