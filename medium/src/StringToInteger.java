@@ -8,7 +8,7 @@
 public class StringToInteger {
     public int stringToInteger(String s) {
         String s1 = s.trim();
-        if(s1.length() == 0)
+        if (s1.length() == 0)
             return 0;
         int ans = 0;
         int position = 0;
@@ -22,7 +22,7 @@ public class StringToInteger {
             position++;
         while (position < s1.length() && Character.isDigit(s1.charAt(position))) {
             int x = s1.charAt(position) - '0';
-            if(ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 && x > 7))
+            if (ans > Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 && x > 7))
                 return isPositive ? Integer.MAX_VALUE : Integer.MIN_VALUE;
 
             ans = ans * 10 + x;
