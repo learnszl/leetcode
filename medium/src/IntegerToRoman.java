@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
 
 /**
  * @Author szl
@@ -8,7 +9,7 @@ import java.util.HashMap;
  */
 public class IntegerToRoman {
     public static String integerToRoman(int num) {
-        StringBuffer res = new StringBuffer();
+        StringBuilder res = new StringBuilder();
         ArrayList<Integer> temp = new ArrayList<>();
         HashMap<Integer, String> roman = new HashMap<>() {
             {
@@ -61,8 +62,24 @@ public class IntegerToRoman {
 
     }
 
+    public static String integerToRoman1(int num) {
+        String[] values = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int[] key = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < key.length; i++) {
+            while (num >= key[i]) {
+                res.append(values[i]);
+                num -= key[i];
+            }
+
+        }
+        return res.toString();
+
+
+    }
+
     public static void main(String[] args) {
-        System.out.println(IntegerToRoman.integerToRoman(10));
+        System.out.println(IntegerToRoman.integerToRoman1(1994));
 
     }
 }
