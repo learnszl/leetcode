@@ -24,19 +24,14 @@ public class LongestCommonPrefix {
                     flag = false;
                     break;
                 }
-
             }
             if (flag) {
                 res += strs[0].charAt(i);
                 i++;
-
             } else
                 break;
-
-
         }
         return res;
-
     }
 
     public static void main(String[] args) {
