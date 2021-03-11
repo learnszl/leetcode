@@ -60,6 +60,6 @@ public class LongestCommonPrefix {
 
 
     public static void main(String[] args) {
-        System.out.println(LongestCommonPrefix.longestCommonPrefix1(new String[]{"fa", "fa", "faff"}));
+        System.out.println(LongestCommonPrefix.longestCommonPrefix1(new String[]{"da", "fa", "faff"}));
     }
 }
