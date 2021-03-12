@@ -28,7 +28,7 @@ public class ValidParentheses {
                 }
             }
         }
-        return left.isEmpty();
+        return left.isEmpty();//since 15 等于 left.length() == 0;
     }
 
     public static void main(String[] args) {
