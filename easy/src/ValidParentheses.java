@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Stack;
 
 /**
  * @Author szl
@@ -14,25 +15,35 @@ public class ValidParentheses {
         map.put(']', '[');
         map.put('}', '{');
         map.put(')', '(');
-        StringBuilder left = new StringBuilder();
+//        StringBuilder left = new StringBuilder();
+//        for (int i = 0; i < N; i++) {
+//            if (left.isEmpty() && (s.charAt(i) == ')' || s.charAt(i) == '}' || s.charAt(i) == ']'))
+//                return false;
+//            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[')
+//                left.append(s.charAt(i));
+//            else {
+//                if (map.get(s.charAt(i)) != left.charAt(left.length() - 1)) {
+//                    break;
+//                } else {
+//                    left.deleteCharAt(left.length() - 1);
+//                }
+//            }
+//        }
+//        return left.isEmpty();//since 15 等于 left.length() == 0;
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < N; i++) {
-            if (left.isEmpty() && (s.charAt(i) == ')' || s.charAt(i) == '}' || s.charAt(i) == ']'))
-                return false;
-            if (s.charAt(i) == '(' || s.charAt(i) == '{' || s.charAt(i) == '[')
-                left.append(s.charAt(i));
-            else {
-                if (map.get(s.charAt(i)) != left.charAt(left.length() - 1)) {
-                    break;
-                } else {
-                    left.deleteCharAt(left.length() - 1);
-                }
-            }
+            char ch = s.charAt(i);
+            if (map.containsKey(ch)) {
+                if (stack.isEmpty() || stack.peek() != map.get(ch))
+                    return false;
+                stack.pop();
+            } else
+                stack.push(ch);
         }
-        return left.isEmpty();//since 15 等于 left.length() == 0;
+        return stack.isEmpty();
     }
 
     public static void main(String[] args) {
         System.out.println(validParentheses("}{"));
-
     }
 }
