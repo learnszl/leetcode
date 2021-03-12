@@ -35,7 +35,7 @@ public class LetterCombinations {
             for (int i = 0; i < lettersCount; i++) {
                 combination.append(letters.charAt(i));
                 backtrack(combinations, phoneMap, digits, index + 1, combination);
-                combination.deleteCharAt(index);
+                combination.deleteCharAt(combination.length() - 1);//index
             }
         }
     }
