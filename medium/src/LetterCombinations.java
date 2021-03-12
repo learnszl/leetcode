@@ -25,7 +25,7 @@ public class LetterCombinations {
         return res;
     }
 
-    public static void backtrack(List<String> combinations, HashMap<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
+    private static void backtrack(List<String> combinations, HashMap<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
         if (index == digits.length()) {
             combinations.add(combination.toString());
         } else {
