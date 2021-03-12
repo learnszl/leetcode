@@ -21,7 +21,6 @@ public class LengthOfLongestSubstring {
                     i = i - list.size() + 1;
                     break;
                 }
-
             }
             if (flag) {
                 list.add(s.charAt(i));
@@ -31,13 +30,11 @@ public class LengthOfLongestSubstring {
                 list.clear();
                 list.add(s.charAt(i));
             }
-
         }
         return ans;
-
     }
 
-    public static int lengthOfLongestSubstring1(String s) {
+    private static int lengthOfLongestSubstring1(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
         int ans = 0;
         int left = 0;
@@ -47,17 +44,14 @@ public class LengthOfLongestSubstring {
 //                System.out.println(left);
             }
             map.put(s.charAt(i), i);
-
             ans = Math.max(ans, i - left + 1);
             System.out.println(ans);
         }
         return ans;
-
     }
 
     public static void main(String[] args) {
         String s = "abba";
         System.out.println(lengthOfLongestSubstring1(s));
     }
-
 }
