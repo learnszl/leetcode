@@ -7,30 +7,27 @@ import java.util.List;
  * @Description
  */
 public class GenerateParentheses {
-    public static List<String> generateParentheses(int n){
+    public static List<String> generateParentheses(int n) {
         ArrayList<String> res = new ArrayList<>();
-        backtrack(res,new StringBuilder(),0,0,n);
+        backtrack(res, new StringBuilder(), 0, 0, n);
         return res;
-
-
-
     }
-    private static void backtrack(List<String> res,StringBuilder sb,int left,int right,int max){
-        if(sb.length() == max * 2){
+
+    private static void backtrack(List<String> res, StringBuilder sb, int left, int right, int max) {
+        if (sb.length() == max * 2) {
             res.add(sb.toString());
             return;
         }
-        if(left < max){
+        if (left < max) {
             sb.append('(');
-            backtrack(res,sb,left + 1,right,max);
+            backtrack(res, sb, left + 1, right, max);
             sb.deleteCharAt(sb.length() - 1);
         }
-        if(right < left){
+        if (right < left) {
             sb.append(')');
-            backtrack(res,sb,left,right+1,max);
+            backtrack(res, sb, left, right + 1, max);
             sb.deleteCharAt(sb.length() - 1);
         }
-
     }
 
     public static void main(String[] args) {
