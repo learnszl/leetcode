@@ -11,7 +11,6 @@ public class NextPermutation {
             if (nums[i] > nums[i - 1])
                 break;
         }
-        System.out.println(i);
         if (i == 0) {
             reverse(nums, 0, N - 1);
         } else {
