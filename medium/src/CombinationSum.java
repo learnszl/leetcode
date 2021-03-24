@@ -10,7 +10,7 @@ import java.util.List;
 public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         int N = candidates.length;
-        Arrays.sort(candidates);
+//        Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<>();
         backtrace(res, new ArrayList<>(), 0, N, candidates, target);
         return res;
