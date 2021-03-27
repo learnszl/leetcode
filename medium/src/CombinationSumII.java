@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,8 +12,9 @@ public class CombinationSumII {
         int N = candidates.length;
 //        Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(candidates);
         boolean[] used = new boolean[N];
-        backtrace(res, new ArrayList<>(), 0, N, candidates, target, used);
+        backtrace(res, new ArrayList<>(), 0, N,candidates, target, used);
         return res;
     }
 

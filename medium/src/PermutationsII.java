@@ -15,10 +15,14 @@ public class PermutationsII {
     }
 
     public static void backtrace(List<List<Integer>> res, ArrayList<Integer> temp, int index, int[] nums, boolean[] used) {
-        if (index == nums.length && !res.contains(temp)) {
+        if (index == nums.length) {
             res.add(new ArrayList<>(temp));
         } else {
             for (int i = 0; i < nums.length; i++) {
+                if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+                    System.out.println(temp);
+                    continue;
+                }
                 if (!used[i]) {
                     temp.add(nums[i]);
                     used[i] = true;
