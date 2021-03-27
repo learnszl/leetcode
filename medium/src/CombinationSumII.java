@@ -13,12 +13,11 @@ public class CombinationSumII {
 //        Arrays.sort(candidates);
         ArrayList<List<Integer>> res = new ArrayList<>();
         Arrays.sort(candidates);
-        boolean[] used = new boolean[N];
-        backtrace(res, new ArrayList<>(), 0, N,candidates, target, used);
+        backtrace(res, new ArrayList<>(), 0, N, candidates, target);
         return res;
     }
 
-    public static void backtrace(List<List<Integer>> res, ArrayList<Integer> temp, int index, int len, int[] candidates, int target, boolean[] used) {
+    public static void backtrace(List<List<Integer>> res, ArrayList<Integer> temp, int index, int len, int[] candidates, int target) {
         if (target == 0) {
             res.add(new ArrayList<>(temp));
             return;
@@ -27,13 +26,11 @@ public class CombinationSumII {
             return;
         }
         for (int i = index; i < len; i++) {
-            if (!used[i]) {
-                temp.add(candidates[i]);
-                used[i] = true;
-                backtrace(res, temp, index + 1, len, candidates, target - candidates[i], used);
-                used[i] = false;
-                temp.remove(temp.size() - 1);
-            }
+            if (i > index && candidates[i] == candidates[i - 1])
+                continue;
+            temp.add(candidates[i]);
+            backtrace(res, temp, i + 1, len, candidates, target - candidates[i]);
+            temp.remove(temp.size() - 1);
         }
     }
 
