@@ -17,7 +17,7 @@ public class SubstringWithConcatenationOfAllWords {
         HashMap<String, Integer> totalWords = new HashMap<>();
         for (String w : words) {
             int value = totalWords.getOrDefault(w, 0);
-            totalWords.put(w, value + 1);
+            totalWords.put(w, value + 1);//加入哈希 方便判断，常用手法
         }
         int len = words[0].length();
         int count = words.length;
@@ -26,7 +26,7 @@ public class SubstringWithConcatenationOfAllWords {
             HashMap<String, Integer> hasWords = new HashMap<>();
             while (num < count && (i + len * count) <= s.length()) {
                 String str = s.substring(i + len * num, i + len * (num + 1));
-                System.out.println(str);
+//                System.out.println(str);
                 if (totalWords.containsKey(str)) {
                     int value = hasWords.getOrDefault(str, 0);
                     hasWords.put(str, value + 1);
