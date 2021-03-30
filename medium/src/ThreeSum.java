@@ -29,7 +29,7 @@ public class ThreeSum {
         return new ArrayList<>(set);
     }
 
-    public static List<List<Integer>> threeSum1(int[] nums) {//通过但很慢
+    public static List<List<Integer>> threeSum1(int[] nums) {//虽然是双指针，但是通过hashset去重，通过但很慢
         int N = nums.length;
         if (N < 3)
             return new ArrayList<>();
@@ -63,6 +63,6 @@ public class ThreeSum {
 
 
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(threeSum1(new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0}));
     }
 }
