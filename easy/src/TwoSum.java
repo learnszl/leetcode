@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -15,9 +16,7 @@ public class TwoSum {
                     ans[0] = i;
                     ans[1] = j;
                 }
-
             }
-
         }
         return ans;
     }
@@ -29,17 +28,12 @@ public class TwoSum {
             if (hashMap.containsKey(target - nums[i]))
                 return new int[]{hashMap.get(target - nums[i]), i};
             hashMap.put(nums[i], i);
-
         }
         return new int[0];
-
     }
 
     public static void main(String[] args) {
         int[] nums = {1, 5, 5, 28};
-        for (int value : twoSum1(nums, 10)) {
-            System.out.println(value);
-        }
+        System.out.println(Arrays.toString(twoSum1(nums, 10)));
     }
-
 }
