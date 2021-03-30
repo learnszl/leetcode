@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -15,13 +14,13 @@ public class ThreeSum {
                 for (int k = j + 1; k < N; k++) {
                     if (nums[i] + nums[j] + nums[k] == 0) {
                         List<Integer> triples = new ArrayList<>();
-                        System.out.println(triples);
+//                        System.out.println(triples);
                         triples.add(nums[i]);
                         triples.add(nums[j]);
                         triples.add(nums[k]);
                         Collections.sort(triples);
                         res.add(triples);
-                        System.out.println(res);
+//                        System.out.println(res);
                     }
                 }
             }
@@ -41,6 +40,8 @@ public class ThreeSum {
             left = 0;
             right = N - 1;
             while (left < i && right > i) {
+                if (nums[left] > 0)
+                    break;
                 int target = nums[left] + nums[right] + nums[i];
                 if (target > 0)
                     right--;
@@ -62,6 +63,6 @@ public class ThreeSum {
 
 
     public static void main(String[] args) {
-        System.out.println(ThreeSum.threeSum1(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
     }
 }
