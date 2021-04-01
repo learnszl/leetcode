@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * @Author szl
  * @Date 2021/3/31 14:41
@@ -10,6 +12,33 @@ public class MultiplyStrings {
         String res = "";
         for (int i = 0; i < Integer.parseInt(num1); i++) {
             res = addStrings(res, num2);
+        }
+        return res;
+    }
+
+    public static String multiplyStrings1(String num1, String num2) {//可以通过但是很慢
+        if (num1.equals("0") || num2.equals("0"))
+            return "0";
+        int N = num1.length();
+        ArrayList<String> list = new ArrayList<>();
+        String res = "";
+        for (int i = N - 1; i >= 0; i--) {
+            int j = i;
+            StringBuilder temp = new StringBuilder();
+            for (int k = 0; k < num1.charAt(i) - '0'; k++) {
+//                System.out.println((int) num1.charAt(i));
+                temp = new StringBuilder(addStrings(temp.toString(), num2));
+            }
+            while (j < N - 1) {
+                temp.append('0');
+                j++;
+            }
+            list.add(temp.toString());
+        }
+//        System.out.println(list.size());
+//        System.out.println(list);
+        for (String s : list) {
+            res = addStrings(res, s);
         }
         return res;
     }
@@ -33,6 +62,6 @@ public class MultiplyStrings {
     }
 
     public static void main(String[] args) {
-        System.out.println(multiplyStrings("0", "0"));
+        System.out.println(multiplyStrings1("6913259244", "71103343"));
     }
 }
