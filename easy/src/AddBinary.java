@@ -10,14 +10,13 @@ public class AddBinary {
         StringBuilder res = new StringBuilder();
         sa.reverse();
         sb.reverse();
-        int i = 0, j = 0, carry = 0;
-        while (i < sa.length() || j < sb.length()) {
+        int i = 0, carry = 0;
+        while (i < sa.length() || i < sb.length()) {
             int xa = i < sa.length() ? sa.charAt(i) - '0' : 0;
-            int xb = j < sb.length() ? sb.charAt(i) - '0' : 0;
+            int xb = i < sb.length() ? sb.charAt(i) - '0' : 0;
             res.append((xa + xb + carry) % 2);
             carry = (xa + xb + carry) / 2;
             i++;
-            j++;
         }
         if (carry != 0)
             res.append(carry);
