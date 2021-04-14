@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -10,7 +9,7 @@ import java.util.List;
 public class Subsets {
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        res.add(new ArrayList<Integer>());
+        res.add(new ArrayList<>());
         System.out.println(res.size());
         for (int num : nums) {
             int len = res.size();
