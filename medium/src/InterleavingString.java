@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @Author szl
  * @Date 2021/4/22 15:03
@@ -7,7 +9,7 @@ public class InterleavingString {
     boolean res = false;
     boolean[][] visited;
 
-    public boolean isInterleave(String s1, String s2, String s3) {
+    public boolean isInterleave(String s1, String s2, String s3) {//回溯
         if (s1.length() + s2.length() != s3.length())
             return false;
         visited = new boolean[s1.length() + 1][s2.length() + 1];
@@ -40,8 +42,31 @@ public class InterleavingString {
         }
     }
 
+    public boolean isInterleave1(String s1, String s2, String s3) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        int len3 = s3.length();
+        if (len1 + len2 != len3)
+            return false;
+        boolean[][] dp = new boolean[len1 + 1][len2 + 1];
+        dp[0][0] = true;
+        for (int i = 1; i < len1 + 1; i++) {
+            dp[i][0] = dp[i - 1][0] && s1.charAt(i - 1) == s3.charAt(i - 1);
+        }
+        for (int j = 1; j < len2 + 1; j++) {
+            dp[0][j] = dp[0][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
+        }
+        for (int i = 1; i < len1 + 1; i++) {
+            for (int j = 1; j < len2 + 1; j++) {
+                dp[i][j] = (dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1)) || (dp[i][j - 1] && s2.charAt(j - 1) == s3.charAt(i + j - 1));
+            }
+        }
+        return dp[len1][len2];
+    }
+
+
     public static void main(String[] args) {
         InterleavingString is = new InterleavingString();
-        System.out.println(is.isInterleave("aabcc", "dbbca", "aadbbcbcac"));
+        System.out.println(is.isInterleave1("aabcc", "dbbca", "aadbbcbcac"));
     }
 }
