@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @Author szl
  * @Date 2021/3/24 14:54
- * @Description
+ * @Description 给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
  */
 public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
