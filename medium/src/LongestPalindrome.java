@@ -2,7 +2,7 @@
 /**
  * @Author szl
  * @Date 2021/2/25 20:57
- * @Description
+ * @Description 给你一个字符串 s，找到 s 中最长的回文子串。
  */
 public class LongestPalindrome {
     public String longestPalindrome(String s) {//中心扩展算法
@@ -20,11 +20,8 @@ public class LongestPalindrome {
                 start = i - (len - 1) / 2;
                 end = i + len / 2;
             }
-
         }
         return s.substring(start, end + 1);
-
-
     }
 
     public int expandCenter(String s, int left, int right) {
@@ -50,20 +47,17 @@ public class LongestPalindrome {
             for (int i = 0; i < j; i++) {
                 if (s.charAt(i) != s.charAt(j)) {
                     dp[i][j] = false;
-
                 } else {
                     if (j - i < 3)
                         dp[i][j] = true;
                     else
                         dp[i][j] = dp[i + 1][j - 1];
-
                 }
                 if (dp[i][j] && j - i + 1 > maxlen) {
                     maxlen = j - i + 1;
                     start = i;
                 }
             }
-
         }
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
@@ -73,8 +67,6 @@ public class LongestPalindrome {
         }
         System.out.println(start + " " + maxlen);
         return s.substring(start, start + maxlen);
-
-
     }
 
     public static void main(String[] args) {
