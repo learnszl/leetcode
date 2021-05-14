@@ -16,6 +16,8 @@ public class WordBreak {
 //        Arrays.fill(dp, false);
         dp[0] = true;
         for (int i = 0; i < n; i++) {
+            if(!dp[i])
+                continue;
             for (int j = i + 1; j < n + 1; j++) {
                 String word = s.substring(i, j);
                 if (dp[i] && wordDict.contains(word))
