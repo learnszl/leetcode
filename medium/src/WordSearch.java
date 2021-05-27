@@ -40,6 +40,7 @@ public class WordSearch {
         }
         return false;
     }
+//    public static boolean exist(char[][] board, String word) {
 //        int m = board.length, n = board[0].length;
 //        boolean[][] used = new boolean[m][n];
 //        ArrayList<String> res = new ArrayList<>();
