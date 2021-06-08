@@ -29,4 +29,43 @@ public class ReverseLinkedList {
         }
         return res;
     }
+
+    public ListNode reverseList1(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode curr = head.next, pre = head, p;
+        pre.next = null;
+        while (curr != null) {
+            p = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = p;
+        }
+        return pre;
+    }
+
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode newNode = reverseList2(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newNode;
+    }
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(0);
+        ListNode p = head;
+        for (int i = 1; i <= 5; i++) {
+            p.next = new ListNode(i);
+            p = p.next;
+        }
+        p.next = null;
+        ReverseLinkedList reverseLinkedList = new ReverseLinkedList();
+        ListNode res = reverseLinkedList.reverseList2(head);
+        while (res != null) {
+            System.out.println(res.val);
+            res = res.next;
+        }
+    }
 }
