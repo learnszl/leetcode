@@ -15,6 +15,10 @@ public class UniqueBinarySearchTrees {
         }
         return dp[n];
     }
+    /*
+    解法二：卡塔兰数
+    dp[0] = 1, dp[n+1] = 2 * (2 * n + 1)/(n + 2) * dp[n]
+     */
 
     public static void main(String[] args) {
         System.out.println(numTrees(3));
