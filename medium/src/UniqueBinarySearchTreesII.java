@@ -55,25 +55,8 @@ public class UniqueBinarySearchTreesII {
         }
         return all;
     }
-    public static void inorder(TreeNode tree,List<Integer> res){
-        if (tree == null)
-            return;
-        inorder(tree.left,res);
-        res.add(tree.val);
-        inorder(tree.right,res);
-
-    }
 
     public static void main(String[] args) {
-//        List<TreeNode> trees = generateTrees(3);
-//        for (TreeNode tree : trees) {
-//            ArrayList<Integer> res = new ArrayList<>();
-//            inorder(tree,res);
-//            System.out.println(res);
-//
-//        }
         System.out.println(generateTrees(3));
-
-
     }
 }
