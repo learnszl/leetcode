@@ -1,5 +1,7 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @Author szl
@@ -57,6 +59,21 @@ public class UniqueBinarySearchTreesII {
     }
 
     public static void main(String[] args) {
+        List<TreeNode> trees = generateTrees(3);
+        for (TreeNode tree : trees) {
+            Queue<TreeNode> queue = new ArrayDeque<>();
+            ArrayList<Integer> res = new ArrayList<>();
+            queue.add(tree);
+            while (!queue.isEmpty()) {
+                tree = queue.remove();
+                res.add(tree.val);
+                if (tree.left != null)
+                    queue.add(tree.left);
+                if (tree.right != null)
+                    queue.add(tree.right);
+            }
+            System.out.println(res);
+        }
         System.out.println(generateTrees(3));
     }
 }
