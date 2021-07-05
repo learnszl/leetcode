@@ -57,6 +57,13 @@ public class ValidateBinarySearchTree {
         inOrder(root.right, value);
     }
 
+    /**
+     * 无需遍历完，有当前值小于等于前一个值即终止
+     *
+     * @param root
+     * @return
+     */
+
     public boolean isValidBST1(TreeNode root) {
         if (root == null)
             return true;
