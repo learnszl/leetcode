@@ -31,6 +31,14 @@ class TreeNode {
 }
 
 public class ValidateBinarySearchTree {
+    long pre = Long.MIN_VALUE;
+
+    /**
+     * 中序遍历完成后判断
+     *
+     * @param root
+     * @return
+     */
     public boolean isValidBST(TreeNode root) {
         ArrayList<Integer> value = new ArrayList<>();
         inOrder(root, value);
@@ -47,6 +55,17 @@ public class ValidateBinarySearchTree {
         inOrder(root.left, value);
         value.add(root.val);
         inOrder(root.right, value);
+    }
+
+    public boolean isValidBST1(TreeNode root) {
+        if (root == null)
+            return true;
+        if (!isValidBST(root.left))
+            return false;
+        if (root.val <= pre)
+            return false;
+        pre = root.val;
+        return isValidBST(root.right);
     }
 }
 
