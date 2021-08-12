@@ -9,7 +9,7 @@ import java.util.HashSet;
  */
 public class LongestConsecutiveSequence {
     public static int longestConsecutiveSequence(int[] nums) {
-        if(nums.length == 0)
+        if (nums.length == 0)
             return 0;
         Arrays.sort(nums);
         int res = 0, temp = 1;
@@ -17,7 +17,7 @@ public class LongestConsecutiveSequence {
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] == nums[i - 1] + 1)
                 temp++;
-            else if( nums[i] == nums[i - 1])
+            else if (nums[i] == nums[i - 1])
                 continue;
             else {
                 if (res < temp)
@@ -27,6 +27,7 @@ public class LongestConsecutiveSequence {
         }
         return Math.max(res, temp);
     }
+
     public static int longestConsecutiveSequence1(int[] nums) {
         HashSet<Integer> set = new HashSet<>();
         for (int num : nums)
@@ -45,8 +46,6 @@ public class LongestConsecutiveSequence {
         }
         return res;
     }
-
-
 
 
     public static void main(String[] args) {
