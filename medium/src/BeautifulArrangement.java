@@ -15,20 +15,20 @@ public class BeautifulArrangement {
 
     public int countArrangement(int n) {
         boolean[] used = new boolean[n];
-        backtrack(n, 1, new ArrayList<>(), used);
+        backtrack(n, 1, used);
         return res;
     }
 
-    private void backtrack(int n, int index, ArrayList<Integer> temp, boolean[] used) {
-        if (temp.size() == n)
+    private void backtrack(int n, int index, boolean[] used) {
+        if (index == n + 1)
             res++;
         for (int i = 1; i <= n; i++) {
             if ((i % index == 0 || index % i == 0) && !used[i - 1]) {
-                temp.add(i);
+//                temp.add(i);
                 used[i - 1] = true;
-                backtrack(n, index + 1, temp, used);
+                backtrack(n, index + 1, used);
                 used[i - 1] = false;
-                temp.remove(temp.size() - 1);
+//                temp.remove(temp.size() - 1);
             }
         }
     }
