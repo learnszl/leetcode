@@ -5,7 +5,11 @@ import java.util.List;
 /**
  * @Author szl
  * @Date 2021/5/14 9:50
- * @Description
+ * @Description 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，
+ * 在字符串中增加空格来构建一个句子，使得句子中所有的单词都在词典中。返回所有这些可能的句子。
+ * 说明：
+ * 分隔时可以重复使用字典中的单词。
+ * 你可以假设字典中没有重复的单词。
  */
 public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
