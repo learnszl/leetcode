@@ -6,28 +6,26 @@ import java.util.ArrayList;
  * @Description
  */
 public class MinStack {
-    int min = Integer.MAX_VALUE;
     ArrayList<Integer> stack;
+    ArrayList<Integer> help;
 
     /**
      * initialize your data structure here.
      */
     public MinStack() {
         stack = new ArrayList<>();
+        help = new ArrayList<>();
+        help.add(Integer.MAX_VALUE);
     }
 
     public void push(int val) {
-        min = Math.min(val, min);
         stack.add(val);
+        help.add(Math.min(help.get(help.size() - 1), val));
     }
 
     public void pop() {
         stack.remove(stack.size() - 1);
-        min = Integer.MAX_VALUE;
-        System.out.println(stack);
-        for (Integer integer : stack) {
-            min = Math.min(min, integer);
-        }
+        help.remove(help.size() - 1);
     }
 
     public int top() {
@@ -35,7 +33,7 @@ public class MinStack {
     }
 
     public int getMin() {
-        return min;
+        return help.get(help.size() - 1);
     }
 
     public static void main(String[] args) {
