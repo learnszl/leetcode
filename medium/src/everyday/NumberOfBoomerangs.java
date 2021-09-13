@@ -1,7 +1,6 @@
 package everyday;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Author szl
@@ -30,3 +29,4 @@ public class NumberOfBoomerangs {
         return res;
     }
 }
+    
