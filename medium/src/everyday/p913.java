@@ -12,7 +12,7 @@ import java.util.HashMap;
  * 输出：2
  * 解释：两个回旋镖为 [[1,0],[0,0],[2,0]] 和 [[1,0],[2,0],[0,0]]
  */
-public class NumberOfBoomerangs {
+public class p913 {
     public int numberOfBoomerangs(int[][] points) {
         int res = 0;
         for (int[] p : points) {
