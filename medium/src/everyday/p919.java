@@ -18,6 +18,11 @@ package everyday;
 public class p919 {
     int res = Integer.MAX_VALUE;
 
+    /**
+     * @param n 字符数
+     * @return dfs
+     */
+
     public int minSteps(int n) {
         if (n == 1)
             return 0;
@@ -34,6 +39,22 @@ public class p919 {
         dfs(n, temp + 1, copy, curr + copy);//粘贴
         dfs(n, temp + 2, curr, curr * 2);//复制粘贴
     }
+
+    /**
+     * @param n 字符数
+     * @return 分解质因数
+     */
+    public int minSteps1(int n) {
+        int res = 0;
+        for (int i = 2; i < n; i++) {
+            while (n % i == 0) {
+                res += i;
+                n /= i;
+            }
+        }
+        return res;
+    }
+
 
     public static void main(String[] args) {
         p919 p919 = new p919();
