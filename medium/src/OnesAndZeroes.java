@@ -1,4 +1,4 @@
-import java.util.function.DoublePredicate;
+import java.util.Arrays;
 
 /**
  * @Author szl
@@ -9,17 +9,21 @@ import java.util.function.DoublePredicate;
  */
 public class OnesAndZeroes {
     public int findMaxForm(String[] strs, int m, int n) {
-        int len = strs.length;
-        if (len == 0)
-            return 0;
-
-
-        for (int i = 1; i < len; i++) {
-
-
+        int[][] dp = new int[m + 1][n + 1];
+        for (String str : strs) {
+            int num_m = 0, num_n = 0;
+            for (char c : str.toCharArray()) {
+                if (c == '0')
+                    num_m++;
+                else
+                    num_n++;
+            }
+            for (int i = m; i >= num_m; i--) {
+                for (int j = n; j >= num_n; j--) {
+                    dp[i][j] = Math.max(dp[i][j], dp[i - num_m][j - num_n] + 1);
+                }
+            }
         }
-        return 0;
-
-
+        return dp[m][n];
     }
 }
