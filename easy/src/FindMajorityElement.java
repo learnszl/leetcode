@@ -6,16 +6,15 @@
  */
 public class FindMajorityElement {
     public int majorityElement(int[] nums) {
-        int maj = nums[0], count = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (count == 0) {
-                maj = nums[i];
+        int maj = 0, count = 0;
+        for (int num : nums) {
+            if (count != 0 && maj == num)
+                count++;
+            else if (count == 0) {
+                maj = num;
                 count++;
             } else {
-                if (nums[i] == maj)
-                    count++;
-                else
-                    count--;
+                count--;
             }
         }
         count = 0;
